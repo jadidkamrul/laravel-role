@@ -28,8 +28,7 @@ Role Create - Admin Panel
                     <h4 class="page-title pull-left">Role Create</h4>
                     <ul class="breadcrumbs pull-left">
                         <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('admin.roles.index') }}">All Roles</a></li>
-                        <li><span>Create Role</span></li>
+                        <li><span>All rols</span></li>
                     </ul>
                 </div>
             </div>
@@ -112,6 +111,28 @@ Role Create - Admin Panel
 
 @section('scripts')
 
-    @include('backend.pages.roles.partials.scripts')
+<script>
+   $("#checkPermissionAll").click(function(){
+      if($(this).is(':checked')){
+         //check all the check
+         $('input[type=checkbox]').prop('checked', true);
+      }else{
+         //un check all the check
+         $('input[type=checkbox]').prop('checked', false);
+      }
+   })
 
+   function checkPermissionByGroup(className, checkThis){
+      const groupIdName = $("#"+checkThis.id);
+      const  classCheckBox = $('.'+className+' input');
+
+      if(groupIdName.is(':checked')){
+         classCheckBox.prop('checked', true);
+      }else{
+         classCheckBox.prop('checked', false);
+      }
+
+   }
+</script>
+    
 @endsection
